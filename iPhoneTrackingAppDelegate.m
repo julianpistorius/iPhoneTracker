@@ -146,7 +146,7 @@
     return NO;
   }
 
-  const float precision = 100;
+  const float precision = 1000000;
   NSMutableDictionary* buckets = [NSMutableDictionary dictionary];
 
   NSString* queries[] = {@"SELECT * FROM CellLocation;", @"SELECT * FROM WifiLocation;"};
@@ -176,8 +176,8 @@
         continue;
       }
       
-      const float weekInSeconds = (7*24*60*60);
-      const float timeBucket = (floor(unixTimestamp/weekInSeconds)*weekInSeconds);
+      const float dayInSeconds = (24*60*60);
+      const float timeBucket = (floor(unixTimestamp/dayInSeconds)*dayInSeconds);
       
       NSDate* timeBucketDate = [NSDate dateWithTimeIntervalSince1970:timeBucket];
 
